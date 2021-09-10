@@ -18,8 +18,7 @@ from ErzaScarlet.events import register
 
 @register(pattern="^/tiny")
 async def _(event):
-        if event.fwd_from:
-        return
+      
     reply = await event.get_reply_message()
     msg = reply.message
     repliedreply = await reply.get_reply_message()
