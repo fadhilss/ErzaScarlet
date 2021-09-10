@@ -27,7 +27,7 @@ async def _(event):
         await event.client.get_entity(reply.forward.sender) if reply.fwd_from
         else reply.sender)
    ik = await bot.download_media(reply)
-   im1 = Image.open("LordUserbot/lorduserbot.png")
+   im1 = Image.open("Images/lorduserbot.png")
     if ik.endswith(".tgs"):
         await event.client.download_media(reply, "ult.tgs")
         os.system("lottie_convert.py ult.tgs json.json")
