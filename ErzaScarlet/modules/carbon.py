@@ -10,9 +10,8 @@ from ErzaScarlet.events import register
 async def _(event):
     reply = await event.get_reply_message()
     msg = reply.message
-    repliedreply = await reply.get_reply_message()
     user = (
-        await event.client.get_entity(reply.forward.sender) 
+        await event.client.get_entity(reply.forward.sender) ) 
     carbon = await make_carbon(message.reply_to_message.text)
        await event.client.send_document(message.chat.id, carbon)
        
