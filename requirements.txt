@@ -9,6 +9,7 @@ python-telegram-bot==12.8
 psycopg2-binary
 feedparser
 pynewtonmath
+
 spongemock
 zalgo-text
 geopy
