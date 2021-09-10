@@ -14,29 +14,23 @@ import os
 import re
 from ErzaScarlet.events import register
 
-@register(pattern="^/q")
 
+
+@register(pattern="^/tiny")
 async def _(event):
-
-    if event.fwd_from:
-
+        if event.fwd_from:
         return
-  reply = await event.get_reply_message()
-
+    reply = await event.get_reply_message()
     msg = reply.message
-
     repliedreply = await reply.get_reply_message()
-
     user = (
-
         await event.client.get_entity(reply.forward.sender) if reply.fwd_from
-
         else reply.sender)
-    xx = await reply.download_media()
-    im1 = Image.open("Images/lorduserbot.png")
+   ik = await bot.download_media(reply)
+   im1 = Image.open("LordUserbot/lorduserbot.png")
     if ik.endswith(".tgs"):
-      event.client.download_media(reply, "ult.tgs")
-      os.system("lottie_convert.py ult.tgs json.json")
+        await event.client.download_media(reply, "ult.tgs")
+        os.system("lottie_convert.py ult.tgs json.json")
         json = open("json.json", "r")
         jsn = json.read()
         json.close()
@@ -92,7 +86,7 @@ async def _(event):
         back_im.save("o.webp", "WEBP", quality=95)
         file = "o.webp"
         os.remove("k.png")
-        await event.client.send_file(event.chat_id, file, reply_to=event.reply_to_msg_id)
+    await event.client.send_file(event.chat_id, file, reply_to=event.reply_to_msg_id)
     await xx.delete()
     os.remove(file)
     os.remove(ik)
