@@ -1,0 +1,25 @@
+import os
+from ErzaScarlet import dispatcher
+from telethon.tl import types, functions
+from ErzaScarlet.utils.functions import make_carbon
+
+
+from ErzaScarlet.events import register
+
+@register(pattern="^/carbon")
+async def _(event):
+if event.fwd_from:
+        return
+    reply = await event.get_reply_message()
+    msg = reply.message
+    repliedreply = await reply.get_reply_message()
+    user = (
+        await event.client.get_entity(reply.forward.sender) if reply.fwd_from
+        else reply.sender)
+    carbon = await make_carbon(message.reply_to_message.text)
+       await event.client.send_document(message.chat.id, carbon)
+       
+
+    
+
+
