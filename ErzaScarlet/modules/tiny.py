@@ -12,16 +12,26 @@ import random
 import json
 import os
 import re
-from tg_bot.events import register
+from ErzaScarlet.events import register
 
-@register(outgoing=True, pattern="^.tiny(?: |$)(.*)", disable_errors=True)
-async def ultiny(event):
+@register(pattern="^/q")
+
+async def _(event):
+
+    if event.fwd_from:
+
+        return
   reply = await event.get_reply_message()
-    if not message.reply_to_message:
-       await message.reply_text(
-        "Mohon balas ke stiker bukan teks.") 
-    return await message.reply_text(
-        "Memproses tiny") 
+
+    msg = reply.message
+
+    repliedreply = await reply.get_reply_message()
+
+    user = (
+
+        await event.client.get_entity(reply.forward.sender) if reply.fwd_from
+
+        else reply.sender)
     xx = await reply.download_media()
     im1 = Image.open("Images/lorduserbot.png")
     if ik.endswith(".tgs"):
