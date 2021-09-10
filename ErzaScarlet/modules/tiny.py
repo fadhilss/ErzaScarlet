@@ -17,7 +17,7 @@ from tg_bot.events import register
 @register(outgoing=True, pattern="^.tiny(?: |$)(.*)", disable_errors=True)
 async def ultiny(event):
   reply = await event.get_reply_message()
-    if not (reply and (reply.media)):
+    if not message.reply_to_message:
        await message.reply_text(
         "Mohon balas ke stiker bukan teks.") 
     return await message.reply_text(
