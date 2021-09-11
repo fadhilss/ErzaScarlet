@@ -22,47 +22,6 @@ async def is_register_admin(chat, user):
         return True
 
 
-@register(pattern="^/adzan (.*)")
-async def adzan(e):
-   if not adzan.pattern_match.group(1):
-        LOCATION = PLACE
-        if not LOCATION:
-        await event.reply("`Harap Menentukan Kota Atau Negara.`")
-            return
-    else:
-          LOCATION = e.pattern_match.group(1)
-          url = f"https://api.pray.zone/v2/times/today.json?city={LOCATION}"
-          request = requests.get(url)
-          if request.status_code == 500:
-          return await event.reply(f"**Tidak Dapat Menemukan Kota** `{LOCATION}`")
-          
-    parsed = json.loads(request.text)
-
-    city = parsed["results"]["location"]["city"]
-    country = parsed["results"]["location"]["country"]
-    timezone = parsed["results"]["location"]["timezone"]
-    date = parsed["results"]["datetime"][0]["date"]["gregorian"]
-
-    imsak = parsed["results"]["datetime"][0]["times"]["Imsak"]
-    subuh = parsed["results"]["datetime"][0]["times"]["Fajr"]
-    zuhur = parsed["results"]["datetime"][0]["times"]["Dhuhr"]
-    ashar = parsed["results"]["datetime"][0]["times"]["Asr"]
-    maghrib = parsed["results"]["datetime"][0]["times"]["Maghrib"]
-    isya = parsed["results"]["datetime"][0]["times"]["Isha"]
-
-    result = (
-        f"**Jadwal Sholat**:\n"
-        f"📅 `{date} | {timezone}`\n"
-        f"🌏 `{city} | {country}`\n\n"
-        f"**Imsak :** `{imsak}`\n"
-        f"**Subuh :** `{subuh}`\n"
-        f"**Zuhur :** `{zuhur}`\n"
-        f"**Ashar :** `{ashar}`\n"
-        f"**Maghrib :** `{maghrib}`\n"
-        f"**Isya :** `{isya}`\n"
-    )
-
-    await event.reply(result)
 
 
 @register(pattern="^/imdb (.*)")
