@@ -24,10 +24,11 @@ async def is_register_admin(chat, user):
 
 @register(pattern="^/adzan (.*)")
 async def adzan(e):
-   if e.is_group:
-        if await is_register_admin(e.input_chat, e.message.sender_id):
+   if not adzan.pattern_match.group(1):
+        LOCATION = PLACE
+        if not LOCATION:
+        await e.edit("`Harap Menentukan Kota Atau Negara.`")
             return
-
     else:
           LOCATION = e.pattern_match.group(1)
           url = f"https://api.pray.zone/v2/times/today.json?city={LOCATION}"
