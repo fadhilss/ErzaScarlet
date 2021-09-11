@@ -25,8 +25,6 @@ async def is_register_admin(chat, user):
 @register(pattern="^/adzan (.*)")
 async def adzan(e):
    if await is_register_admin(e.input_chat, e.message.sender_id):
-       pass
-        else:
             return
        try:
            LOCATION = e.pattern_match.group(1)
