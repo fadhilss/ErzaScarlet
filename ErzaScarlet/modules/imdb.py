@@ -26,11 +26,9 @@ async def is_register_admin(chat, user):
 async def adzan(e):
    if e.is_group:
         if await is_register_admin(e.input_chat, e.message.sender_id):
-            pass
-        else:
             return
 
-    try:
+    else:
           LOCATION = e.pattern_match.group(1)
           url = f"https://api.pray.zone/v2/times/today.json?city={LOCATION}"
           request = requests.get(url)
