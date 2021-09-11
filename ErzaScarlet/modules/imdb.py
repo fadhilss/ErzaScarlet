@@ -27,14 +27,14 @@ async def adzan(e):
    if not adzan.pattern_match.group(1):
         LOCATION = PLACE
         if not LOCATION:
-        await e.reply("`Harap Menentukan Kota Atau Negara.`")
+        await event.reply("`Harap Menentukan Kota Atau Negara.`")
             return
     else:
           LOCATION = e.pattern_match.group(1)
           url = f"https://api.pray.zone/v2/times/today.json?city={LOCATION}"
           request = requests.get(url)
           if request.status_code == 500:
-          return await e.edit(f"**Tidak Dapat Menemukan Kota** `{LOCATION}`")
+          return await event.reply(f"**Tidak Dapat Menemukan Kota** `{LOCATION}`")
           
     parsed = json.loads(request.text)
 
@@ -62,7 +62,7 @@ async def adzan(e):
         f"**Isya :** `{isya}`\n"
     )
 
-    await e.reply(result)
+    await event.reply(result)
 
 
 @register(pattern="^/imdb (.*)")
