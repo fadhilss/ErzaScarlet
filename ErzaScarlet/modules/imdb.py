@@ -27,7 +27,7 @@ async def adzan(e):
    if not adzan.pattern_match.group(1):
         LOCATION = PLACE
         if not LOCATION:
-        await e.edit("`Harap Menentukan Kota Atau Negara.`")
+        await e.reply("`Harap Menentukan Kota Atau Negara.`")
             return
     else:
           LOCATION = e.pattern_match.group(1)
@@ -62,7 +62,7 @@ async def adzan(e):
         f"**Isya :** `{isya}`\n"
     )
 
-    await e.edit(result)
+    await e.reply(result)
 
 
 @register(pattern="^/imdb (.*)")
